@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Order Form</title>
+    <h1>Book Form</h1>
+    <style>
+        h1{
+            text-align:center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            width: 500px;
+            margin: auto;
+        }
+        fieldset {
+            border: 1px solid #000;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        legend {
+            font-weight: bold;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 250px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        input[type="number"] {
+            width: 50px;
+        }
+        .submit-btn {
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <fieldset>
+        <legend>Customer Info</legend>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name"><br>
+
+        <label for="phone">Telephone:</label>
+        <input type="tel" id="phone" placeholder="Pattern: 1-234-567-8910" pattern="[0-9]{1}-[0-9]{3}-[0-9]{3}-[0-9]{4}"><br>
+
+        <label for="email">Email address:</label>
+        <input type="email" id="email" placeholder="Enter your email address">
+    </fieldset>
+
+    <fieldset>
+        <legend>Books</legend>
+        <input type="text" placeholder="Book title">
+        <label for="quantity">Quantity (Maximum 5):</label>
+        <input type="number" id="quantity" min="1" max="5">
+    </fieldset>
+
+    <button class="submit-btn">Submit</button>
+</div>
+
+<footer>
+    &copy; 2011 Acme United. All rights reserved.
+</footer>
+
+</body>
+</html>
