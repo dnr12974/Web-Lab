@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+#container {
+    border: 4px solid #4a4a6a;
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+#banner {
+    border: 3px solid purple;
+    padding: 15px;
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+}
+
+.logo {
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#main {
+    display: flex;
+}
+
+#nav {
+    border: 3px solid green;
+    width: 25%;
+    padding: 20px;
+    background-color: #343a40;
+}
+
+#nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+#nav ul li {
+    margin: 10px 0;
+}
+
+#nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: block;
+    padding: 8px;
+    transition: 0.3s;
+}
+
+#nav a:hover {
+    color: #ffc107;
+    text-decoration: underline;
+}
+
+#content {
+    border: 3px solid orange;
+    width: 75%;
+    padding: 20px;
+    background-color: white;
+}
+
+h2 {
+    color: #007bff;
+    ul li:nth-child(even) {
+        background-color: #f1f1f1;
+        padding: 5px;
+    }
+}
+
+
+p::first-line {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+p:hover {
+    background-color: #eef6ff;
+}
+
+
+ul li::before {
+    content: "• ";
+    color: #007bff;
+    font-weight: bold;
+}
+
+#footer {
+    border: 3px solid lightgray;
+    padding: 15px;
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+    margin-top: 10px;
+}
