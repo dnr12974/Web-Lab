@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Find Longest Word</title>
+</head>
+<body>
+  <script>
+    let input = prompt("Enter words separated by space:");
+    let words = input.split(" ");
+
+    function findLongestWord(words) {
+      return Math.max(...words.map(word => word.length));
+    }
+
+    alert("Length of longest word: " + findLongestWord(words));
+  </script>
+</body>
+</html>

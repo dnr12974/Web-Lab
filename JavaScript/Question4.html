@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rövarspråket</title>
+</head>
+<body>
+  <script>
+    let text = prompt("Enter a sentence:");
+
+    function translate(text) {
+      let result = '';
+      for (let ch of text) {
+        if ("aeiouAEIOU ".includes(ch) || !/[a-z]/i.test(ch)) {
+          result += ch;
+        } else {
+          result += ch + "o" + ch;
+        }
+      }
+      return result;
+    }
+
+    alert("Translated text: " + translate(text));
+  </script>
+</body>
+</html>

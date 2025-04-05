@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Numbers Average</title>
+</head>
+<body>
+  <script>
+    let count = parseInt(prompt("How many random numbers to generate?"));
+    let numbers = [];
+    let sum = 0;
+
+    for (let i = 0; i < count; i++) {
+      let rand = Math.floor(Math.random() * 100) + 1;
+      numbers.push(rand);
+      sum += rand;
+    }
+
+    let avg = sum / count;
+
+    alert("Generated Numbers: " + numbers.join(", "));
+    alert("Average: " + avg.toFixed(2));
+  </script>
+</body>
+</html>

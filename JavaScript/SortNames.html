@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sort Names</title> <!--sorting based on ASCII Characters is done here-->
+</head>
+<body>
+  <script>
+    let names = [];
+    let input;
+    
+    while (true) {
+      input = prompt("Enter a name (Cancel to stop):");
+      if (input === null) break;
+      if (input.trim() !== "") names.push(input.trim());
+    }
+
+    names.sort();
+    
+    let list = "<h3>Sorted Names:</h3><ol>";
+    for (let name of names) {
+      list += `<li>${name}</li>`;
+    }
+    list += "</ol>";
+
+    document.write(list);
+  </script>
+</body>
+</html>
