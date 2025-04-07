@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Info Form</title>
+</head>
+<body>
+
+<h3>Enter Your Details</h3>
+
+<form onsubmit="showInfo(); return false;">
+  Name: <input type="text" id="name"><br><br>
+  Age: <input type="number" id="age"><br><br>
+  Hometown: <input type="text" id="hometown"><br><br>
+  <button type="submit">Submit</button>
+</form>
+
+<div id="output"></div>
+
+<script>
+  function showInfo() {
+    const name = document.getElementById("name").value;
+    const age = parseInt(document.getElementById("age").value);
+    const hometown = document.getElementById("hometown").value;
+    const currentYear = new Date().getFullYear();
+    const birthYear = currentYear - age;
+
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = `
+      <p>Hello, ${name}!</p>
+      <p>You were born in the year ${birthYear}.</p>
+      <p>Search your hometown: 
+        <a href="https://www.google.com/search?q=${encodeURIComponent(hometown)}" target="_blank">
+          ${hometown} on Google
+        </a>
+      </p>
+    `;
+  }
+</script>
+
+</body>
+</html>
