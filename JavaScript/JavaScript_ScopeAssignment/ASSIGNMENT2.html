@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Activity Evaluator</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #eef2f3;
+      color: #333;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .form-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    .instructions {
+      font-size: 14px;
+      color: #666;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Student Activity Evaluator</h1>
+  <div class="form-container">
+    <label for="studentName">Student Name:</label>
+    <input type="text" id="studentName" placeholder="Enter student name" value="Anika">
+
+    <label for="scores">Activity Scores (comma-separated):</label>
+    <textarea id="scores" rows="2" placeholder="e.g., 10, 20, 15, 5">10, 20, 15, 5</textarea>
+    <div class="instructions">
+      Enter scores for various activities like sports, clubs, coding contests, etc.
+    </div>
+    <button onclick="evaluateStudent()">Evaluate</button>
+  </div>
+
+  <script>
+    // =====================================================
+    // Name: Dheer N Raijada
+    // USN: 1MS22CS167
+    // Section: 6 A
+    // What I Learned:
+    // I learned that global variables can be accessed throughout my code, whereas local variables are confined to the functions in which they are declared. 
+    // This project showed me the importance of managing variable scope effectively. 
+    // I also explored the differences between function declarations, function expressions, and anonymous functions, and how each can be used to write cleaner and more efficient code.
+    // Additionally, I gained a solid understanding of lexical scope by implementing nested functions, where the inner function can access variables from its outer function.
+    // The concept of hoisting became clear when I observed that variables declared with 'var' are hoisted and are undefined until their declaration is encountered.
+    // Finally, I discovered that 'var' is function-scoped rather than block-scoped, which is a crucial detail to consider when writing code.
+    // Overall, this assignment deepened my understanding of JavaScript fundamentals and best practices.
+
+    // =====================================================
+
+    // Global variables for student data (will be updated from user input)
+    let studentName = "Anika";
+    let activityScores = [10, 20, 15, 5];
+
+    // Hoisting Experiment: Using a variable before declaration.
+    console.log("Category before declaration:", category); // Expected output: undefined
+    var category;  // Later assigned in evaluateStudent()
+
+    //  Function Declaration: Calculate the total score.
+    function calculateTotal(scores) {
+      let total = 0;
+      for (let i = 0; i < scores.length; i++) {
+        total += scores[i];
+      }
+      return total;
+    }
+
+    // Function Expression: Evaluate rank based on total score.
+    const evaluateRank = function(totalScore) {
+      if (totalScore > 40) {
+        return "Star Performer";
+      } else if (totalScore >= 30 && totalScore <= 40) {
+        return "Active";
+      } else {
+        return "Inactive";
+      }
+    };
+
+    //  Anonymous Function: Calculate average score.
+    const averageScore = function(scores) {
+      return calculateTotal(scores) / scores.length;
+    };
+
+    // Lexical Scope Task: Generate report with a nested function.
+    function generateReport() {
+      let total = calculateTotal(activityScores);
+      let rank = evaluateRank(total);
+      // Nested function accessing outer variables.
+      function showDetails() {
+        console.log("Report:");
+        console.log("  Student:", studentName);
+        console.log("  Rank:", rank);
+        console.log("  Message:", rank === "Star Performer" ? "Great job on co-curriculars!" : "Keep up the effort!");
+      }
+      showDetails();
+    }
+
+    // Scope Isolation Test: 'var' declared inside block accessed outside.
+    if (true) {
+      var blockTest = "This variable is accessible outside this block.";
+    }
+    console.log("Scope Isolation Test:", blockTest);
+
+    // Main function triggered by button click
+    function evaluateStudent() {
+      // Get user inputs
+      studentName = document.getElementById("studentName").value.trim();
+      let scoresInput = document.getElementById("scores").value.trim();
+      
+      // Convert comma-separated scores to an array of numbers
+      activityScores = scoresInput.split(",").map(score => Number(score.trim()));
+
+      // Calculate results
+      let totalScore = calculateTotal(activityScores);
+      category = evaluateRank(totalScore);
+      let avgScore = averageScore(activityScores);
+
+      // Output expected results to the console
+      console.clear();
+      console.log("Student:", studentName);
+      console.log("Activity Scores:", activityScores);
+      console.log("Total Score:", totalScore);
+      console.log("Average Score:", avgScore);
+      console.log("Rank:", category);
+
+      // Generate detailed report using lexical scoping
+      generateReport();
+    }
+  </script>
+</body>
+</html>

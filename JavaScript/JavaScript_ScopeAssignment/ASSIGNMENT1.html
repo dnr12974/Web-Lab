@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Web Development Quiz</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .info {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    .note {
+      color: #888;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Web Development Quiz</h1>
+  <button onclick="startQuiz()">Start Quiz</button>
+  <button onclick="reviewLocalVar()">Review Score</button>
+
+  <div class="info">
+    <p><strong>Open your browser’s console</strong> to see the quiz prompts and results. 
+    <br/>You’ll be asked 3 basic questions on HTML, CSS, and JS.</p>
+    <p class="note">Note: This quiz demonstrates <em>function scope, declarations vs. expressions, hoisting, and more</em>!</p>
+  </div>
+
+  <script>
+    // ==========================================
+    // Name: Dheer N Raijada
+    // USN: 1MS22CS167
+    // Section: 6 A
+    // ==========================================
+    // What I Learned:
+    // 1) The difference between global and local variables
+    // 2) Function declarations vs function expressions vs arrow functions
+    // 3) How hoisting works with var and function declarations
+    // 4) Score calculation and console-based output
+    // 5) Writing clean, commented code
+
+    // === GLOBAL SCOPE EXAMPLE ===
+    // 'score' is accessible anywhere in this script
+    var score = 0;
+
+    // === HOISTING EXAMPLE ===
+    // Using 'var' variable before it's declared
+    console.log("Value of 'hoistedVar' before declaration:", hoistedVar);
+    var hoistedVar = "I was hoisted but initially undefined!";
+
+    // === FUNCTION DECLARATION (Hoisted) ===
+    function question1() {
+      // 'answer' is a LOCAL variable - only accessible inside this function
+      let answer = prompt("Q1: Which HTML tag is used to define an unordered list?\n(a) <ol> (b) <ul> (c) <li>");
+      if (answer && answer.toLowerCase() === "b") {
+        score++;
+        console.log("Q1 Correct!");
+      } else {
+        console.log("Q1 Wrong.");
+      }
+    }
+
+    // === FUNCTION EXPRESSION (Not hoisted) ===
+    const question2 = function() {
+      let answer = prompt("Q2: Which CSS property is used to change the text color?\n(a) font-color (b) color (c) text-color");
+      if (answer && answer.toLowerCase() === "b") {
+        score++;
+        console.log("Q2 Correct!");
+      } else {
+        console.log("Q2 Wrong.");
+      }
+    };
+
+    // === ARROW FUNCTION ===
+    const question3 = () => {
+      let answer = prompt("Q3: Which keyword is used to declare a variable in pre-ES6 JavaScript?\n(a) var (b) let (c) const");
+      if (answer && answer.toLowerCase() === "a") {
+        score++;
+        console.log("Q3 Correct!");
+      } else {
+        console.log("Q3 Wrong.");
+      }
+    };
+
+    // === MAIN QUIZ FUNCTION ===
+    function startQuiz() {
+      // Reset the score each time
+      score = 0;
+
+      console.log("=== Starting Quiz ===");
+      question1();    // function declaration
+      question2();    // function expression
+      question3();    // arrow function
+      console.log("Your final score is:", score);
+      console.log("=== Quiz End ===");
+    }
+
+    // === BONUS: Attempting to Access a Local Variable ===
+    function reviewLocalVar() {
+      try {
+        // 'answer' is local to each question function
+        // This should fail, as 'answer' is not defined in global scope
+        console.log("Value of answer:", answer);
+      } catch (err) {
+        console.log("Cannot access 'answer' here — it's local to the function!");
+      }
+    }
+  </script>
+</body>
+</html>
